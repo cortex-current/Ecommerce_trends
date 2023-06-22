@@ -4,17 +4,16 @@ Get insight on sales from an e-commerce website that has information of 100k ord
 The information can shed light on various aspects of the business, such as order processing, pricing strategies, payment and shipping efficiency, customer demographics, product characteristics, and customer satisfaction levels.
 
 ## Questions to be answered:
-### Q. What is the time period for which the data is given?
+### What is the time period for which the data is given?
 ```sql
 SELECT 
   min(DATE(order_purchase_timestamp)) as first_date, 
   max(DATE(order_purchase_timestamp)) as last_date, 
   DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference
 FROM orders;
+```
 
-
----
-### List of cities and states in dataset
+### List out all the cities and states in the dataset.
 ```sql
 SELECT DISTINCT geolocation_city as cities 
 FROM geolocation 
