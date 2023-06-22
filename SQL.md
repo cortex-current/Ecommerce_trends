@@ -1,13 +1,20 @@
 ### Time period for which data is given
-```
-SELECT max(DATE(order_purchase_timestamp)) as first_date, 
-min(DATE(order_purchase_timestamp)) as last_date, 
-DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference 
+```sql
+SELECT 
+  max(DATE(order_purchase_timestamp)) as first_date, 
+  min(DATE(order_purchase_timestamp)) as last_date, 
+  DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference 
 FROM orders;
-```
 
+| customer_id | total_spent |
+| ----------- | ----------- |
+| A           | 76          |
+| B           | 74          |
+| C           | 36          |
+
+---
 ### List of cities and states in dataset
-```
+```sql
 SELECT DISTINCT geolocation_city as cities 
 FROM geolocation 
 ORDER BY cities 
@@ -20,7 +27,7 @@ LIMIT 10;
 ```
 
 ### Is there a growing trend on e-commerce in Brazil?
-```
+```sql
 SELECT EXTRACT(YEAR FROM order_purchase_timestamp) as years, 
 COUNT(order_id) as no_orders 
 FROM orders
@@ -36,7 +43,7 @@ ORDER BY months;
 ```
 
 ### Time at which most customers prefer to buy
-```
+```sql
 WITH sales_time AS 
   (SELECT hours,no_orders, 
   CASE WHEN hours>= 0 AND hours < 6 THEN 'Dawn' 
@@ -57,7 +64,7 @@ GROUP BY Time;
 ```
 
 ### Get orders by months and states
-```
+```sql
 SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
 customer_state as states, 
 COUNT(order_id) as no_orders 
@@ -67,7 +74,7 @@ ORDER BY months,states;
 ```
 
 ### Distribution of customers in Brazil
-```
+```sql
 SELECT customer_state as states, 
 COUNT(DISTINCT customer_unique_id) as no_customers 
 FROM customers
@@ -76,7 +83,7 @@ ORDER BY no_customers DESC;
 ```
 
 ### Percent increase in cost of order from 2017 to 2018
-```
+```sql
 WITH yearly_costs AS 
   (SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
   EXTRACT(YEAR FROM order_purchase_timestamp) as years, 
@@ -95,7 +102,7 @@ LIMIT 1;
 ```
 
 ### Mean and sum of price and freight value by customer states
-```
+```sql
 SELECT customer_state,
 ROUND(SUM(price),2) as sum_price, 
 ROUND(AVG(price),2) as avg_price, 
@@ -109,7 +116,7 @@ LIMIT 10;
 
 ## Analysis on sales, freight and delivery time
 ### Calculating the days difference between purchasing, delivery and estimated delivery dates
-```
+```sql
 SELECT DATE(order_purchase_timestamp) AS purchase, 
 DATE(order_delivered_carrier_date) AS delivery, 
 DATE(order_estimated_delivery_date) AS estimated, 
@@ -129,7 +136,7 @@ LIMIT 10;
 ```
 
 ### Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
-```
+```sql
 CREATE VIEW vw_delivery_dates AS 
 SELECT customer_id, freight_value, 
 DATE(order_purchase_timestamp) AS purchase, 
@@ -149,7 +156,7 @@ ORDER BY customer_state;
 ```
 
 ### Top 5 states with highest/lowest average freight value
-```
+```sql
 SELECT customer_state, 
 ROUND(AVG(freight_value),2) AS mean_freight, 
 CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
@@ -161,7 +168,7 @@ LIMIT 5;
 ```
 
 ### Top 5 states with highest/lowest average time to delivery
-```
+```sql
 SELECT customer_state, 
 ROUND(AVG(freight_value),2) AS mean_freight, 
 CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery,
@@ -173,7 +180,7 @@ LIMIT 5;
 ```
 
 ### Top 5 states where delivery is really fast/ not so fast compared to estimated date 
-```
+```sql
 SELECT customer_state, 
 ROUND(AVG(freight_value),2) AS mean_freight, 
 CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
@@ -186,7 +193,7 @@ LIMIT 5;
 
 ## Payment type analysis:
 #### Month over Month count of orders for different payment types 
-```
+```sql
 SELECT payment_type, 
 EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
 COUNT(o.order_id) as no_orders 
@@ -196,7 +203,7 @@ ORDER BY payment_type,months;
 ```
 
 ### Distribution of payment installments and count of orders 
-```
+```sql
 SELECT payment_installments, 
 COUNT(o.order_id) as no_orders 
 FROM orders AS o JOIN payments AS p ON o.order_id=p.order_id 
