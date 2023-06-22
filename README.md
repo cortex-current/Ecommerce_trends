@@ -7,16 +7,11 @@ The information can shed light on various aspects of the business, such as order
 ### Q. What is the time period for which the data is given?
 ```sql
 SELECT 
-  max(DATE(order_purchase_timestamp)) as first_date, 
-  min(DATE(order_purchase_timestamp)) as last_date, 
-  DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference 
+  min(DATE(order_purchase_timestamp)) as first_date, 
+  max(DATE(order_purchase_timestamp)) as last_date, 
+  DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference
 FROM orders;
 
-| customer_id | total_spent |
-| ----------- | ----------- |
-| A           | 76          |
-| B           | 74          |
-| C           | 36          |
 
 ---
 ### List of cities and states in dataset
