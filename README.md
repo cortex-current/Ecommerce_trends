@@ -3,7 +3,7 @@ Get insight on sales from an e-commerce website that has information of 100k ord
 
 The information can shed light on various aspects of the business, such as order processing, pricing strategies, payment and shipping efficiency, customer demographics, product characteristics, and customer satisfaction levels.
 
-## Questions to be answered:
+## 1. Exploring the data.
 ### What is the time period for which the data is given?
 ```sql
 SELECT 
@@ -25,8 +25,8 @@ FROM geolocation
 ORDER BY states 
 LIMIT 10;
 ```
-
-### Is there a growing trend on e-commerce in the region?
+## 2. In-depth exploration:
+### 1. Is there a growing trend on e-commerce in the region?
 We can look at the number of purchases made across different months or years. Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August.
 ```sql
 SELECT EXTRACT(YEAR FROM order_purchase_timestamp) as years, 
@@ -43,7 +43,7 @@ GROUP BY months
 ORDER BY months;
 ```
 
-### During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
+### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
 ```sql
 WITH sales_time AS 
   (SELECT hours,no_orders, 
@@ -63,8 +63,8 @@ SELECT
 FROM sales_time 
 GROUP BY Time;
 ```
-
-### Get the month on month no. of orders placed in each state.
+## 3.	Evolution of E-commerce orders in the Brazil region:
+### 1.	Get month on month orders by region, states (No. of orders in each month for each state is shown)
 ```sql
 SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
   customer_state as states, 
@@ -74,7 +74,8 @@ GROUP BY months,states
 ORDER BY months,states;
 ```
 
-### How are the customers distributed across all the states?
+### 2. How are the customers distributed across all the states?
+The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
 ```sql
 SELECT customer_state as states, 
   COUNT(DISTINCT customer_unique_id) as no_customers 
@@ -82,8 +83,8 @@ FROM customers
 GROUP BY states 
 ORDER BY no_customers DESC;
 ```
-
-### What is the percent increase in cost of order from 2017 to 2018 (include months between Jan to Aug only)?
+## 4.	Impact on Economy: Analyze the money movement by e-commerce by looking at order prices, freight and others.
+### 1. What is the percent increase in cost of order from 2017 to 2018 (include months between Jan to Aug only)?
 ```sql
 WITH yearly_costs AS 
   (SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
@@ -102,7 +103,7 @@ ORDER BY years DESC
 LIMIT 1;
 ```
 
-### Mean and sum of price and freight value by customer states.
+### 2. Mean and sum of price and freight value by customer states.
 ```sql
 SELECT customer_state,
   ROUND(SUM(price),2) as sum_price, 
@@ -115,8 +116,8 @@ ORDER BY customer_state
 LIMIT 10;
 ```
 
-## Analysis on sales, freight and delivery time
-### Calculating the days difference between purchasing, delivery and estimated delivery dates
+## 5. Analysis on sales, freight and delivery time
+### 1. Calculating the days difference between purchasing, delivery and estimated delivery dates
 ```sql
 SELECT DATE(order_purchase_timestamp) AS purchase, 
   DATE(order_delivered_carrier_date) AS delivery, 
@@ -136,7 +137,18 @@ ORDER BY delivery DESC
 LIMIT 10;
 ```
 
-### Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
+### 2.	Create columns time_to_delivery and diff_estimated_delivery
+SELECT 
+  DATE(order_purchase_timestamp) AS purchase,
+  DATE(order_delivered_customer_date) AS delivery,
+  DATE(order_estimated_delivery_date) AS estimated,
+  DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery,
+  DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery,
+  FROM `scaler-dsml-361413.ecommerce.orders`
+  ORDER BY delivery DESC
+  LIMIT 10;
+
+### 3. Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
 ```sql
 CREATE VIEW vw_delivery_dates AS 
 SELECT customer_id, freight_value, 
@@ -156,7 +168,8 @@ GROUP BY customer_state
 ORDER BY customer_state;
 ```
 
-### Top 5 states with highest/lowest average freight value
+### 4. Top 5 states with highest/lowest average freight value
+State RR has the most expensive freight value, and SP has cheapest freight value.
 ```sql
 SELECT customer_state, 
   ROUND(AVG(freight_value),2) AS mean_freight, 
@@ -169,6 +182,7 @@ LIMIT 5;
 ```
 
 ### Top 5 states with highest/lowest average time to delivery
+State SP has fastest delivery from purchase date, while states AP and RR have slowest.
 ```sql
 SELECT customer_state, 
   ROUND(AVG(freight_value),2) AS mean_freight, 
@@ -181,6 +195,7 @@ LIMIT 5;
 ```
 
 ### Top 5 states where delivery is really fast/ not so fast compared to estimated date 
+State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
 ```sql
 SELECT customer_state, 
   ROUND(AVG(freight_value),2) AS mean_freight, 
@@ -192,8 +207,9 @@ ORDER BY mean_diff_estim_delivery DESC
 LIMIT 5;
 ```
 
-## Payment type analysis:
-#### Month over Month count of orders for different payment types 
+## 6. Payment type analysis:
+### 1. Month over Month count of orders for different payment types 
+Most popular mode of payment is credit card, then UPI, then vouchers and finally debit cards are the least popular method. The most number of purchases are made in the middle of a year.
 ```sql
 SELECT payment_type, 
   EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
@@ -203,7 +219,7 @@ GROUP BY payment_type,months
 ORDER BY payment_type,months;
 ```
 
-### Distribution of payment installments and count of orders 
+### 2. Distribution of payment installments and count of orders 
 ```sql
 SELECT payment_installments, 
   COUNT(o.order_id) as no_orders 
@@ -211,3 +227,19 @@ FROM orders AS o JOIN payments AS p ON o.order_id=p.order_id
 GROUP BY payment_installments 
 ORDER BY payment_installments;
 ```
+## Insights:
+•	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
+•	There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August. Business should focus on improving sales in the months after August.
+•	Brazilians tend to buy more during afternoon or evening time maybe because of off work hours.
+•	The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
+•	State RR has the most expensive freight value, and SP has cheapest freight value.
+•	State SP has fastest delivery from purchase date, while states AP and RR have slowest.
+•	State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
+•	Most popular mode of payment is credit card, then UPI, then vouchers and finally debit cards are the least popular method. Most number of purchases are made in the middle of a year.
+•	Most customers pay in a single or fewer than 5 number of installments.
+
+## Recommendations:
+•	Business should focus on improving sales in the months after August. It could offer discounts during festivals or holiday season or year-end sales between September to December. 
+•	Since the customers get more time to buy in the afternoon and evening after work hours, the store could provide some discounts to increase sales during those times in a day.
+•	State SP has the most number of customers and also the fastest delivery services. Delivery dates are still not close to estimated dates with lowest delay being 8 days in the AL state. Delivery vehicles and drivers need to increased in all states. Supply chain delays also need to be managed better to decrease time to delivery and time delay from estimated to delivery date.
+•	Since credit cards are the most preferred mode of payment, customers could be offered points on credit cards for every purchase that can entice them for more purchases.
