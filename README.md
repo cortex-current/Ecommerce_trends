@@ -75,12 +75,12 @@ WITH sales_time AS
     GROUP BY hours 
     ORDER BY hours)
   ) 
-SELECT 
-  Time, SUM(no_orders) AS no_order 
+SELECT Time, SUM(no_orders) AS no_order 
 FROM sales_time 
 GROUP BY Time;
 ```
-## 3.	Evolution of E-commerce orders in the Brazil region:
+
+## 3.	Evolution of E-commerce orders in the region:
 ### 1.	Get month on month orders by region, states (No. of orders in each month for each state is shown)
 ```sql
 SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
@@ -90,6 +90,51 @@ FROM orders AS o JOIN customers AS c ON o.customer_ID = c.customer_id
 GROUP BY months,states 
 ORDER BY months,states;
 ```
+WITH
+months_region AS (
+WITH
+geolocation_region AS (
+SELECT
+*,
+CASE
+WHEN geolocation_state IN ('RO', 'AC', 'AM', 'RR', 'PA', 'AP', 'TO') THEN 'Norte'
+WHEN geolocation_state IN ('MA','PI', 'CE', 'RN', 'PB', 'PE', 'AL', 'SE', 'BA') THEN 'Nordeste'
+WHEN geolocation_state IN ('MG', 'ES', 'RJ', 'SP') THEN 'Sudeste'
+WHEN geolocation_state IN ('PR', 'SC', 'RS') THEN 'Sul'
+ELSE 'Centro-Oeste' END region
+FROM geolocation )
+SELECT EXTRACT(year FROM order_purchase_timestamp) year_ord,
+EXTRACT(month FROM order_purchase_timestamp) month_ord,
+region,
+customer_state state,
+COUNT(1) no_of_orders_per_region_state
+FROM
+scaler.orders o
+JOIN
+scaler.customers c
+ON
+c.customer_id = o.customer_id
+JOIN
+geolocation_region gr
+ON
+c.customer_zip_code_prefix = gr.geolocation_zip_code_prefix
+GROUP BY
+
+EXTRACT(year
+FROM
+order_purchase_timestamp),
+EXTRACT(month
+FROM
+order_purchase_timestamp),
+region,
+customer_state )
+SELECT
+*
+FROM
+months_region
+ORDER BY
+year_ord,
+month_ord
 
 ### 2. How are the customers distributed across all the states?
 The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
