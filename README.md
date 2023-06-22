@@ -26,7 +26,8 @@ ORDER BY states
 LIMIT 10;
 ```
 
-### Is there a growing trend on e-commerce in Brazil?
+### Is there a growing trend on e-commerce in the region?
+We can look at the number of purchases made across different months or years. Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August.
 ```sql
 SELECT EXTRACT(YEAR FROM order_purchase_timestamp) as years, 
   COUNT(order_id) as no_orders 
@@ -101,7 +102,7 @@ ORDER BY years DESC
 LIMIT 1;
 ```
 
-### Mean and sum of price and freight value by customer states
+### Mean and sum of price and freight value by customer states.
 ```sql
 SELECT customer_state,
   ROUND(SUM(price),2) as sum_price, 
