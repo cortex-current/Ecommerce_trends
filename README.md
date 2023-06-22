@@ -4,7 +4,7 @@ Get insight on sales from an e-commerce website that has information of 100k ord
 The information can shed light on various aspects of the business, such as order processing, pricing strategies, payment and shipping efficiency, customer demographics, product characteristics, and customer satisfaction levels.
 
 ## Questions to be answered:
-### Q. What is the time period for which data is given?
+### Q. What is the time period for which the data is given?
 ```sql
 SELECT 
   max(DATE(order_purchase_timestamp)) as first_date, 
