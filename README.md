@@ -25,22 +25,39 @@ FROM geolocation
 ORDER BY states 
 LIMIT 10;
 ```
+### Order Status Counts
+```sql
+SELECT order_status,
+  COUNT(*) count_status
+FROM orders
+GROUP BY order_status;
+```
+
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
 We can look at the number of purchases made across different months or years. Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August.
 ```sql
-SELECT EXTRACT(YEAR FROM order_purchase_timestamp) as years, 
-  COUNT(order_id) as no_orders 
-FROM orders
-GROUP BY years 
-ORDER BY years 
-LIMIT 10;
+WITH base AS (
+  SELECT EXTRACT(month FROM order_purchase_timestamp) order_months,
+  COUNT(1) no_orders,
+  SUM(price) total_price
+  FROM orders o JOIN order_items oi ON oi.order_id = o.order_id
+  GROUP BY EXTRACT(month FROM order_purchase_timestamp) 
+  )
+SELECT * FROM base
+ORDER BY total_price DESC;
 
-SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
-  COUNT(order_id) as no_orders, 
-FROM orders
-GROUP BY months 
-ORDER BY months;
+WITH base AS (
+  SELECT
+    EXTRACT(year FROM order_purchase_timestamp) order_year,
+    EXTRACT(month FROM order_purchase_timestamp) order_month,
+    COUNT(1) order_counts,
+    SUM(price) total_price
+  FROM orders o JOIN order_items oi ON oi.order_id = o.order_id
+  GROUP BY EXTRACT(year FROM order_purchase_timestamp), EXTRACT(month FROM order_purchase_timestamp) 
+  )
+SELECT * FROM base 
+ORDER BY total_price DESC;
 ```
 
 ### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
