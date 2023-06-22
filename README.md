@@ -29,20 +29,20 @@ LIMIT 10;
 ### Is there a growing trend on e-commerce in Brazil?
 ```sql
 SELECT EXTRACT(YEAR FROM order_purchase_timestamp) as years, 
-COUNT(order_id) as no_orders 
+  COUNT(order_id) as no_orders 
 FROM orders
 GROUP BY years 
 ORDER BY years 
 LIMIT 10;
 
 SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
-COUNT(order_id) as no_orders, 
+  COUNT(order_id) as no_orders, 
 FROM orders
 GROUP BY months 
 ORDER BY months;
 ```
 
-### Time at which most customers prefer to buy
+### During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
 ```sql
 WITH sales_time AS 
   (SELECT hours,no_orders, 
@@ -57,32 +57,32 @@ WITH sales_time AS
     GROUP BY hours 
     ORDER BY hours)
   ) 
-SELECT Time,
-SUM(no_orders) AS no_order 
+SELECT 
+  Time, SUM(no_orders) AS no_order 
 FROM sales_time 
 GROUP BY Time;
 ```
 
-### Get orders by months and states
+### Get the month on month no. of orders placed in each state.
 ```sql
 SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
-customer_state as states, 
-COUNT(order_id) as no_orders 
+  customer_state as states, 
+  COUNT(order_id) as no_orders 
 FROM orders AS o JOIN customers AS c ON o.customer_ID = c.customer_id 
 GROUP BY months,states 
 ORDER BY months,states;
 ```
 
-### Distribution of customers in Brazil
+### How are the customers distributed across all the states?
 ```sql
 SELECT customer_state as states, 
-COUNT(DISTINCT customer_unique_id) as no_customers 
+  COUNT(DISTINCT customer_unique_id) as no_customers 
 FROM customers
 GROUP BY states 
 ORDER BY no_customers DESC;
 ```
 
-### Percent increase in cost of order from 2017 to 2018
+### What is the percent increase in cost of order from 2017 to 2018 (include months between Jan to Aug only)?
 ```sql
 WITH yearly_costs AS 
   (SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
@@ -104,10 +104,10 @@ LIMIT 1;
 ### Mean and sum of price and freight value by customer states
 ```sql
 SELECT customer_state,
-ROUND(SUM(price),2) as sum_price, 
-ROUND(AVG(price),2) as avg_price, 
-ROUND(SUM(freight_value),2) as sum_freight, 
-ROUND(AVG(freight_value),2) as avg_freight 
+  ROUND(SUM(price),2) as sum_price, 
+  ROUND(AVG(price),2) as avg_price, 
+  ROUND(SUM(freight_value),2) as sum_freight, 
+  ROUND(AVG(freight_value),2) as avg_freight 
 FROM orders AS o JOIN customers AS c ON o.customer_id = c.customer_id JOIN order_items AS oi ON o.order_ID = oi.order_id 
 GROUP BY customer_state 
 ORDER BY customer_state 
@@ -118,18 +118,18 @@ LIMIT 10;
 ### Calculating the days difference between purchasing, delivery and estimated delivery dates
 ```sql
 SELECT DATE(order_purchase_timestamp) AS purchase, 
-DATE(order_delivered_carrier_date) AS delivery, 
-DATE(order_estimated_delivery_date) AS estimated, 
-DATE_DIFF(order_estimated_delivery_date,order_delivered_carrier_date,DAY) AS estim_deliv_diff, 
-DATE_DIFF(order_delivered_carrier_date,order_purchase_timestamp, DAY) AS deliv_purchase_diff, 
+  DATE(order_delivered_carrier_date) AS delivery, 
+  DATE(order_estimated_delivery_date) AS estimated, 
+  DATE_DIFF(order_estimated_delivery_date,order_delivered_carrier_date,DAY) AS estim_deliv_diff, 
+  DATE_DIFF(order_delivered_carrier_date,order_purchase_timestamp, DAY) AS deliv_purchase_diff, 
 FROM orders
 LIMIT 10;
 
 SELECT DATE(order_purchase_timestamp) AS purchase, 
-DATE(order_delivered_customer_date) AS delivery, 
-DATE(order_estimated_delivery_date) AS estimated, 
-DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery, 
-DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery, 
+  DATE(order_delivered_customer_date) AS delivery, 
+  DATE(order_estimated_delivery_date) AS estimated, 
+  DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery, 
+  DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery, 
 FROM orders
 ORDER BY delivery DESC 
 LIMIT 10;
@@ -139,17 +139,17 @@ LIMIT 10;
 ```sql
 CREATE VIEW vw_delivery_dates AS 
 SELECT customer_id, freight_value, 
-DATE(order_purchase_timestamp) AS purchase, 
-DATE(order_delivered_customer_date) AS delivery, 
-DATE(order_estimated_delivery_date) AS estimated, 
-DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery, 
-DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery, 
+  DATE(order_purchase_timestamp) AS purchase, 
+  DATE(order_delivered_customer_date) AS delivery, 
+  DATE(order_estimated_delivery_date) AS estimated, 
+  DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery, 
+  DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery, 
 FROM orders AS o JOIN order_items AS oi ON o.order_id = oi.order_id; 
 
 SELECT customer_state, 
-ROUND(AVG(freight_value),2) AS mean_freight, 
-CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
-CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
+  ROUND(AVG(freight_value),2) AS mean_freight, 
+  CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
+  CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
 FROM vw_delivery_dates AS vw JOIN customers AS c ON vw.customer_id=c.customer_id 
 GROUP BY customer_state 
 ORDER BY customer_state;
@@ -158,9 +158,9 @@ ORDER BY customer_state;
 ### Top 5 states with highest/lowest average freight value
 ```sql
 SELECT customer_state, 
-ROUND(AVG(freight_value),2) AS mean_freight, 
-CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
-CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
+  ROUND(AVG(freight_value),2) AS mean_freight, 
+  CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
+  CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
 FROM vw_delivery_dates AS vw JOIN customers AS c ON vw.customer_id=c.customer_id 
 GROUP BY customer_state 
 ORDER BY mean_freight 
@@ -170,9 +170,9 @@ LIMIT 5;
 ### Top 5 states with highest/lowest average time to delivery
 ```sql
 SELECT customer_state, 
-ROUND(AVG(freight_value),2) AS mean_freight, 
-CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery,
-CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
+  ROUND(AVG(freight_value),2) AS mean_freight, 
+  CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery,
+  CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
 FROM vw_delivery_dates AS vw JOIN customers AS c ON vw.customer_id=c.customer_id 
 GROUP BY customer_state 
 ORDER BY mean_time_to_delivery DESC 
@@ -182,9 +182,9 @@ LIMIT 5;
 ### Top 5 states where delivery is really fast/ not so fast compared to estimated date 
 ```sql
 SELECT customer_state, 
-ROUND(AVG(freight_value),2) AS mean_freight, 
-CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
-CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
+  ROUND(AVG(freight_value),2) AS mean_freight, 
+  CEIL(AVG(time_to_delivery)) AS mean_time_to_delivery, 
+  CEIL(AVG(diff_estimated_delivery)) AS mean_diff_estim_delivery 
 FROM vw_delivery_dates AS vw JOIN customers AS c ON vw.customer_id=c.customer_id 
 GROUP BY customer_state 
 ORDER BY mean_diff_estim_delivery DESC 
@@ -195,8 +195,8 @@ LIMIT 5;
 #### Month over Month count of orders for different payment types 
 ```sql
 SELECT payment_type, 
-EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
-COUNT(o.order_id) as no_orders 
+  EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
+  COUNT(o.order_id) as no_orders 
 FROM orders AS o JOIN payments AS p ON o.order_id=p.order_id 
 GROUP BY payment_type,months 
 ORDER BY payment_type,months;
@@ -205,7 +205,7 @@ ORDER BY payment_type,months;
 ### Distribution of payment installments and count of orders 
 ```sql
 SELECT payment_installments, 
-COUNT(o.order_id) as no_orders 
+  COUNT(o.order_id) as no_orders 
 FROM orders AS o JOIN payments AS p ON o.order_id=p.order_id 
 GROUP BY payment_installments 
 ORDER BY payment_installments;
