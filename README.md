@@ -28,7 +28,7 @@ ORDER BY states
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=30% height=30%> <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=30% height=30%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=20% height=20%> <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=20% height=20%>
 
 ### Order Status Counts
 ```sql
@@ -256,13 +256,13 @@ GROUP BY payment_type,months
 ORDER BY payment_type,months;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17a.png" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17a.png" width=20% height=20%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17b.png" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17b.png" width=20% height=20%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17c.png" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17c.png" width=20% height=20%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17d.png" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17d.png" width=20% height=20%>
 
 ### 2. Distribution of payment installments and count of orders 
 ```sql
