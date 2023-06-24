@@ -12,8 +12,10 @@ SELECT
   DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference
 FROM orders;
 ```
+<p align="center">
+<img src="/SQLproject/screenshots1.PNG" width=40% height=40%>
 
-### List out all the cities and states in the dataset.
+  ### List out all the cities and states in the dataset.
 ```sql
 SELECT DISTINCT geolocation_city as cities 
 FROM geolocation 
