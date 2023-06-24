@@ -15,7 +15,7 @@ FROM orders;
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/1.PNG" width=40% height=40%>
 
-  ### List out all the cities and states in the dataset.
+### List out all the cities and states in the dataset.
 ```sql
 SELECT DISTINCT geolocation_city as cities 
 FROM geolocation 
@@ -28,7 +28,7 @@ ORDER BY states
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=30% height=10%>
 
 ### Order Status Counts
 ```sql
@@ -38,7 +38,7 @@ FROM orders
 GROUP BY order_status;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=30% height=10%>
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
@@ -136,7 +136,8 @@ FROM orders AS o JOIN customers AS c ON o.customer_id = c.customer_id JOIN order
 GROUP BY customer_state 
 ORDER BY customer_state 
 LIMIT 10;
-```<p align="center">
+```
+<p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/9.PNG" width=40% height=40%>
 
 ## 5. Analysis on sales, freight and delivery time
@@ -152,6 +153,7 @@ LIMIT 10;
 ```
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.PNG" width=40% height=40%>
+  
 ```sql
 SELECT DATE(order_purchase_timestamp) AS purchase, 
   DATE(order_delivered_customer_date) AS delivery, 
@@ -176,7 +178,8 @@ SELECT
 FROM `scaler-dsml-361413.ecommerce.orders`
 ORDER BY delivery DESC
 LIMIT 10;
-```<p align="center">
+```
+<p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/12.PNG" width=40% height=40%>
 
 ### 3. Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
@@ -215,6 +218,7 @@ LIMIT 5;
 ```
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14.PNG" width=40% height=40%>
+
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14b.PNG" width=40% height=40%>
 
@@ -232,6 +236,7 @@ LIMIT 5;
 ```
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15.PNG" width=40% height=40%>
+
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15b.PNG" width=40% height=40%>
 
@@ -282,6 +287,7 @@ ORDER BY payment_installments;
 ```
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.PNG" width=40% height=40%>
+  
 ## Insights:
 -	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
 -	There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August. Business should focus on improving sales in the months after August.
