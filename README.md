@@ -140,7 +140,7 @@ ORDER BY customer_state
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.png" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.PNG" width=40% height=40%>
  
 ## 5. Analysis on sales, freight and delivery time
 ### 1. Calculating the days difference between purchasing, delivery and estimated delivery dates
