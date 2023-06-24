@@ -44,6 +44,7 @@ SELECT
   SUM(price) total_price
 FROM orders o JOIN order_items oi ON oi.order_id = o.order_id
 GROUP BY 1,2
+ORDER BY 1,2
 ```
 
 ### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
