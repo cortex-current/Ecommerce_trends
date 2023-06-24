@@ -27,6 +27,9 @@ FROM geolocation
 ORDER BY states 
 LIMIT 10;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=40% height=40%>
+
 ### Order Status Counts
 ```sql
 SELECT order_status,
@@ -34,6 +37,8 @@ SELECT order_status,
 FROM orders
 GROUP BY order_status;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=40% height=40%>
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
@@ -48,6 +53,8 @@ FROM orders o JOIN order_items oi ON oi.order_id = o.order_id
 GROUP BY 1,2
 ORDER BY 1,2
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4.PNG" width=40% height=40%>
 
 ### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
 ```sql
@@ -68,6 +75,8 @@ SELECT Time, SUM(no_orders) AS no_order
 FROM sales_time 
 GROUP BY Time;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%>
 
 ## 3.	Evolution of E-commerce orders in the region:
 ### 1.	Get month on month orders by region, states (No. of orders in each month for each state is shown)
@@ -79,6 +88,8 @@ FROM orders AS o JOIN customers AS c ON o.customer_ID = c.customer_id
 GROUP BY months,states 
 ORDER BY months,states;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/6.PNG" width=40% height=40%>
 
 ### 2. How are the customers distributed across all the states?
 The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
@@ -89,6 +100,9 @@ FROM customers
 GROUP BY states 
 ORDER BY no_customers DESC;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/7.PNG" width=40% height=40%>
+
 ## 4.	Impact on Economy: Analyze the money movement by e-commerce by looking at order prices, freight and others.
 ### 1. What is the percent increase in cost of order from 2017 to 2018 (include months between Jan to Aug only)?
 ```sql
@@ -108,6 +122,8 @@ GROUP BY years
 ORDER BY years DESC 
 LIMIT 1;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/8.PNG" width=40% height=40%>
 
 ### 2. Mean and sum of price and freight value by customer states.
 ```sql
@@ -120,7 +136,8 @@ FROM orders AS o JOIN customers AS c ON o.customer_id = c.customer_id JOIN order
 GROUP BY customer_state 
 ORDER BY customer_state 
 LIMIT 10;
-```
+```<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/9.PNG" width=40% height=40%>
 
 ## 5. Analysis on sales, freight and delivery time
 ### 1. Calculating the days difference between purchasing, delivery and estimated delivery dates
@@ -132,7 +149,10 @@ SELECT DATE(order_purchase_timestamp) AS purchase,
   DATE_DIFF(order_delivered_carrier_date,order_purchase_timestamp, DAY) AS deliv_purchase_diff, 
 FROM orders
 LIMIT 10;
-
+```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.PNG" width=40% height=40%>
+```sql
 SELECT DATE(order_purchase_timestamp) AS purchase, 
   DATE(order_delivered_customer_date) AS delivery, 
   DATE(order_estimated_delivery_date) AS estimated, 
@@ -142,6 +162,8 @@ FROM orders
 ORDER BY delivery DESC 
 LIMIT 10;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/11.PNG" width=40% height=40%>
 
 ### 2.	Create columns time_to_delivery and diff_estimated_delivery
 ```sql
@@ -154,7 +176,8 @@ SELECT
 FROM `scaler-dsml-361413.ecommerce.orders`
 ORDER BY delivery DESC
 LIMIT 10;
-```
+```<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/12.PNG" width=40% height=40%>
 
 ### 3. Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
 ```sql
@@ -175,6 +198,8 @@ FROM vw_delivery_dates AS vw JOIN customers AS c ON vw.customer_id=c.customer_id
 GROUP BY customer_state 
 ORDER BY customer_state;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/13.PNG" width=40% height=40%>
 
 ### 4. Top 5 states with highest/lowest average freight value
 State RR has the most expensive freight value, and SP has cheapest freight value.
@@ -188,6 +213,10 @@ GROUP BY customer_state
 ORDER BY mean_freight 
 LIMIT 5;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14b.PNG" width=40% height=40%>
 
 ### Top 5 states with highest/lowest average time to delivery
 State SP has fastest delivery from purchase date, while states AP and RR have slowest.
@@ -201,6 +230,10 @@ GROUP BY customer_state
 ORDER BY mean_time_to_delivery DESC 
 LIMIT 5;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15b.PNG" width=40% height=40%>
 
 ### Top 5 states where delivery is really fast/ not so fast compared to estimated date 
 State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
@@ -214,6 +247,10 @@ GROUP BY customer_state
 ORDER BY mean_diff_estim_delivery DESC 
 LIMIT 5;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/16.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/16b.PNG" width=40% height=40%>
 
 ## 6. Payment type analysis:
 ### 1. Month over Month count of orders for different payment types 
@@ -226,6 +263,14 @@ FROM orders AS o JOIN payments AS p ON o.order_id=p.order_id
 GROUP BY payment_type,months 
 ORDER BY payment_type,months;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17a.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17b.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17c.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17d.PNG" width=40% height=40%>
 
 ### 2. Distribution of payment installments and count of orders 
 ```sql
@@ -235,6 +280,8 @@ FROM orders AS o JOIN payments AS p ON o.order_id=p.order_id
 GROUP BY payment_installments 
 ORDER BY payment_installments;
 ```
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.PNG" width=40% height=40%>
 ## Insights:
 -	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
 -	There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August. Business should focus on improving sales in the months after August.
