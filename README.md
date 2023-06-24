@@ -13,7 +13,7 @@ SELECT
 FROM orders;
 ```
 <p align="center">
-<img src="/SQLproject/screenshots/1.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/1.PNG" width=40% height=40%>
 
   ### List out all the cities and states in the dataset.
 ```sql
