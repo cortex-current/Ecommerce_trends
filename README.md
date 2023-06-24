@@ -28,7 +28,7 @@ ORDER BY states
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=30% height=10%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=10% height=10%>
 
 ### Order Status Counts
 ```sql
@@ -38,7 +38,7 @@ FROM orders
 GROUP BY order_status;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=30% height=10%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=10% height=10%>
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
@@ -152,7 +152,7 @@ FROM orders
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.png" width=40% height=40%>
   
 ```sql
 SELECT DATE(order_purchase_timestamp) AS purchase, 
@@ -165,7 +165,7 @@ ORDER BY delivery DESC
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/11.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/11.png" width=40% height=40%>
 
 ### 2.	Create columns time_to_delivery and diff_estimated_delivery
 ```sql
@@ -180,7 +180,7 @@ ORDER BY delivery DESC
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/12.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/12.png" width=40% height=40%>
 
 ### 3. Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
 ```sql
@@ -202,7 +202,7 @@ GROUP BY customer_state
 ORDER BY customer_state;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/13.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/13.png" width=40% height=40%>
 
 ### 4. Top 5 states with highest/lowest average freight value
 State RR has the most expensive freight value, and SP has cheapest freight value.
@@ -217,10 +217,10 @@ ORDER BY mean_freight
 LIMIT 5;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14.png" width=40% height=40%>
 
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14b.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14b.png" width=40% height=40%>
 
 ### Top 5 states with highest/lowest average time to delivery
 State SP has fastest delivery from purchase date, while states AP and RR have slowest.
@@ -235,10 +235,10 @@ ORDER BY mean_time_to_delivery DESC
 LIMIT 5;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15.png" width=40% height=40%>
 
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15b.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15b.png" width=40% height=40%>
 
 ### Top 5 states where delivery is really fast/ not so fast compared to estimated date 
 State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
@@ -253,9 +253,9 @@ ORDER BY mean_diff_estim_delivery DESC
 LIMIT 5;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/16.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/16.png" width=40% height=40%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/16b.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/16b.png" width=40% height=40%>
 
 ## 6. Payment type analysis:
 ### 1. Month over Month count of orders for different payment types 
@@ -269,13 +269,13 @@ GROUP BY payment_type,months
 ORDER BY payment_type,months;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17a.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17a.png" width=40% height=40%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17b.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17b.png" width=40% height=40%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17c.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17c.png" width=40% height=40%>
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17d.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/17d.png" width=40% height=40%>
 
 ### 2. Distribution of payment installments and count of orders 
 ```sql
@@ -286,7 +286,7 @@ GROUP BY payment_installments
 ORDER BY payment_installments;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.png" width=40% height=40%>
   
 ## Insights:
 -	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
