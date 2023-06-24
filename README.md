@@ -29,6 +29,8 @@ LIMIT 10;
 ```
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=10% height=10%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=10% height=10%>
 
 ### Order Status Counts
 ```sql
@@ -38,7 +40,7 @@ FROM orders
 GROUP BY order_status;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=10% height=10%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4.PNG" width=40% height=40%>
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
@@ -54,7 +56,7 @@ GROUP BY 1,2
 ORDER BY 1,2
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%>
 
 ### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
 ```sql
@@ -76,7 +78,7 @@ FROM sales_time
 GROUP BY Time;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/6.PNG" width=40% height=40%>
 
 ## 3.	Evolution of E-commerce orders in the region:
 ### 1.	Get month on month orders by region, states (No. of orders in each month for each state is shown)
@@ -89,7 +91,7 @@ GROUP BY months,states
 ORDER BY months,states;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/6.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/7.PNG" width=40% height=40%>
 
 ### 2. How are the customers distributed across all the states?
 The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
@@ -101,7 +103,7 @@ GROUP BY states
 ORDER BY no_customers DESC;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/7.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/8.PNG" width=40% height=40%>
 
 ## 4.	Impact on Economy: Analyze the money movement by e-commerce by looking at order prices, freight and others.
 ### 1. What is the percent increase in cost of order from 2017 to 2018 (include months between Jan to Aug only)?
@@ -123,7 +125,7 @@ ORDER BY years DESC
 LIMIT 1;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/8.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/9.PNG" width=40% height=40%>
 
 ### 2. Mean and sum of price and freight value by customer states.
 ```sql
@@ -138,8 +140,8 @@ ORDER BY customer_state
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/9.PNG" width=40% height=40%>
-
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.png" width=40% height=40%>
+ 
 ## 5. Analysis on sales, freight and delivery time
 ### 1. Calculating the days difference between purchasing, delivery and estimated delivery dates
 ```sql
@@ -149,19 +151,6 @@ SELECT DATE(order_purchase_timestamp) AS purchase,
   DATE_DIFF(order_estimated_delivery_date,order_delivered_carrier_date,DAY) AS estim_deliv_diff, 
   DATE_DIFF(order_delivered_carrier_date,order_purchase_timestamp, DAY) AS deliv_purchase_diff, 
 FROM orders
-LIMIT 10;
-```
-<p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/10.png" width=40% height=40%>
-  
-```sql
-SELECT DATE(order_purchase_timestamp) AS purchase, 
-  DATE(order_delivered_customer_date) AS delivery, 
-  DATE(order_estimated_delivery_date) AS estimated, 
-  DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery, 
-  DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery, 
-FROM orders
-ORDER BY delivery DESC 
 LIMIT 10;
 ```
 <p align="center">
