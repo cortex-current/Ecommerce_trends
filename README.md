@@ -149,9 +149,9 @@ SELECT
   DATE(order_estimated_delivery_date) AS estimated,
   DATE_DIFF(order_delivered_customer_date,order_purchase_timestamp, DAY) AS time_to_delivery,
   DATE_DIFF(order_estimated_delivery_date,order_delivered_customer_date,DAY) AS diff_estimated_delivery,
-  FROM `scaler-dsml-361413.ecommerce.orders`
-  ORDER BY delivery DESC
-  LIMIT 10;
+FROM `scaler-dsml-361413.ecommerce.orders`
+ORDER BY delivery DESC
+LIMIT 10;
 ```
 
 ### 3. Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
