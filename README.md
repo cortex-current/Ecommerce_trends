@@ -234,18 +234,18 @@ GROUP BY payment_installments
 ORDER BY payment_installments;
 ```
 ## Insights:
-•	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
-•	There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August. Business should focus on improving sales in the months after August.
-•	Brazilians tend to buy more during afternoon or evening time maybe because of off work hours.
-•	The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
-•	State RR has the most expensive freight value, and SP has cheapest freight value.
-•	State SP has fastest delivery from purchase date, while states AP and RR have slowest.
-•	State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
-•	Most popular mode of payment is credit card, then UPI, then vouchers and finally debit cards are the least popular method. Most number of purchases are made in the middle of a year.
-•	Most customers pay in a single or fewer than 5 number of installments.
+-	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
+-	There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August. Business should focus on improving sales in the months after August.
+- Brazilians tend to buy more during afternoon or evening time maybe because of off work hours.
+-	The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
+-	State RR has the most expensive freight value, and SP has cheapest freight value.
+-	State SP has fastest delivery from purchase date, while states AP and RR have slowest.
+-	State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
+-	Most popular mode of payment is credit card, then UPI, then vouchers and finally debit cards are the least popular method. Most number of purchases are made in the middle of a year.
+-	Most customers pay in a single or fewer than 5 number of installments.
 
 ## Recommendations:
-•	Business should focus on improving sales in the months after August. It could offer discounts during festivals or holiday season or year-end sales between September to December. 
-•	Since the customers get more time to buy in the afternoon and evening after work hours, the store could provide some discounts to increase sales during those times in a day.
-•	State SP has the most number of customers and also the fastest delivery services. Delivery dates are still not close to estimated dates with lowest delay being 8 days in the AL state. Delivery vehicles and drivers need to increased in all states. Supply chain delays also need to be managed better to decrease time to delivery and time delay from estimated to delivery date.
-•	Since credit cards are the most preferred mode of payment, customers could be offered points on credit cards for every purchase that can entice them for more purchases.
+-	Business should focus on improving sales in the months after August. It could offer discounts during festivals or holiday season or year-end sales between September to December. 
+- Since the customers get more time to buy in the afternoon and evening after work hours, the store could provide some discounts to increase sales during those times in a day.
+-	State SP has the most number of customers and also the fastest delivery services. Delivery dates are still not close to estimated dates with lowest delay being 8 days in the AL state. Delivery vehicles and drivers need to increased in all states. Supply chain delays also need to be managed better to decrease time to delivery and time delay from estimated to delivery date.
+-	Since credit cards are the most preferred mode of payment, customers could be offered points on credit cards for every purchase that can entice them for more purchases.
