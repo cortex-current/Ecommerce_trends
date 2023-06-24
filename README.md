@@ -28,9 +28,7 @@ ORDER BY states
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=10% height=10%>
-<p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=10% height=10%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=10% height=10%> <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=10% height=10%>
 
 ### Order Status Counts
 ```sql
