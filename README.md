@@ -142,6 +142,7 @@ LIMIT 10;
 ```
 
 ### 2.	Create columns time_to_delivery and diff_estimated_delivery
+```sql
 SELECT 
   DATE(order_purchase_timestamp) AS purchase,
   DATE(order_delivered_customer_date) AS delivery,
@@ -151,6 +152,7 @@ SELECT
   FROM `scaler-dsml-361413.ecommerce.orders`
   ORDER BY delivery DESC
   LIMIT 10;
+```
 
 ### 3. Group data by state, take mean of freight_value, time_to_delivery, diff_estimated_delivery
 ```sql
