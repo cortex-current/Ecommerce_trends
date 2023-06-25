@@ -276,7 +276,7 @@ ORDER BY payment_installments;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.png" width=40% height=40%>
 
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/tableau.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/tableau.PNG" width=100% height=100%>
   
 ## Insights:
 -	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
