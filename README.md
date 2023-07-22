@@ -26,7 +26,7 @@ ORDER BY states
 LIMIT 10;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=20% height=20%> <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=20% height=20%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=20% height=20%> <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=20% height=15%>
 
 ### Order Status Counts
 ```sql
