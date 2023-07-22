@@ -1,8 +1,6 @@
 ## Problem Statement
 Get insight on sales from an e-commerce website that has information of 100k orders made from 2016 to 2018. The dataset is stored in multiple tables related to orders, order payment methods, product price and other details, order reviews, order items, customer details, sellers details, geolocation information.
 
-The information can shed light on various aspects of the business, such as order processing, pricing strategies, payment and shipping efficiency, customer demographics, product characteristics, and customer satisfaction levels.
-
 ## 1. Exploring the data.
 ### What is the time period for which the data is given?
 ```sql
