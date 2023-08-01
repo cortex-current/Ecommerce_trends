@@ -1,8 +1,12 @@
 ## Problem Statement
-Get insight on sales from an e-commerce website that has information of 100k orders made from 2016 to 2018. The dataset is stored in multiple tables related to orders, order payment methods, product price and other details, order reviews, order items, customer details, sellers details, geolocation information.
+This is a Brazilian ecommerce public dataset of orders made at Olist Store. The dataset has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allows viewing an order from multiple dimensions: from order status, price, payment and freight performance to customer location, product attributes and finally reviews written by customers. There is a table about geolocation dataset that relates Brazilian zip codes to lat/lng coordinates.
 
-## Dataset from Kaggle
+## Dataset source
 Brazilian E-Commerce Public Dataset by Olist: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+## Data Schema
+<p align="center">
+<img src="https://imgur.com/HRhd2Y0.png" width=100% height=100%>
 
 ## 1. Exploring the data.
 ### What is the time period for which the data is given?
