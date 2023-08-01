@@ -1,6 +1,9 @@
 ## Problem Statement
 Get insight on sales from an e-commerce website that has information of 100k orders made from 2016 to 2018. The dataset is stored in multiple tables related to orders, order payment methods, product price and other details, order reviews, order items, customer details, sellers details, geolocation information.
 
+## Dataset from Kaggle
+Brazilian E-Commerce Public Dataset by Olist: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
 ## 1. Exploring the data.
 ### What is the time period for which the data is given?
 ```sql
