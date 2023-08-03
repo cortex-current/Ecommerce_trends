@@ -1,16 +1,16 @@
 ## Problem Statement
-This is a Brazilian ecommerce public dataset of orders made at Olist Store. The dataset has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allows viewing an order from multiple dimensions: from order status, price, payment and freight performance to customer location, product attributes and finally reviews written by customers. There is a table about geolocation dataset that relates Brazilian zip codes to lat/lng coordinates.
+This is a public dataset of 100k orders made at Olist Store, a Brazilian ecommerce company, from 2016 to 2018 at multiple marketplaces across Brazil. Its features store order information from multiple dimensions: order status, price, payment and freight performance, customer location, product attributes and reviews written by customers. There is a table about geolocation dataset that relates Brazilian zip codes to latitude/longitude coordinates.
 
 ## Dataset source
 Olist, &amp; André Sionek. (2018). <i>Brazilian E-Commerce Public Dataset by Olist</i> [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/195341
 
 ## Data Schema
-The data is stored in several tables shown below for reference:
+The data is stored in multiple tables shown below for reference:
 <p align="center">
 <img src="https://imgur.com/HRhd2Y0.png" width=100% height=100%>
 
-## 1. Exploring the data.
-### What is the time period for which the data is given?
+## 1. Exploring the data:
+### The time period for orders in dataset
 ```sql
 SELECT 
   min(DATE(order_purchase_timestamp)) as first_date, 
@@ -18,10 +18,11 @@ SELECT
   DATE_DIFF(max(DATE(order_purchase_timestamp)),min(DATE(order_purchase_timestamp)), DAY) as days_difference
 FROM orders;
 ```
+The dates for orders available in the dataset range from 2016-09-04 to 2018-10-17.
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/1.PNG" width=40% height=40%>
 
-### List out all the cities and states in the dataset.
+### List of the cities and states in the dataset
 ```sql
 SELECT DISTINCT geolocation_city as cities 
 FROM geolocation 
@@ -33,16 +34,18 @@ FROM geolocation
 ORDER BY states 
 LIMIT 10;
 ```
+A small snippet of the list of cities and states of customer address locations is shown below:
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/2.PNG" width=20% height=20%> <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/3.PNG" width=18% height=18%>
 
-### Order Status Counts
+### Count of order status
 ```sql
 SELECT order_status,
   COUNT(*) count_status
 FROM orders
 GROUP BY order_status;
 ```
+
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4.PNG" width=40% height=40%>
 
@@ -85,7 +88,7 @@ GROUP BY Time;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/6.PNG" width=40% height=40%>
 
 ## 3.	Evolution of E-commerce orders in the region:
-### 1.	Get month on month orders by region, states (No. of orders in each month for each state is shown)
+### 1. Month on month orders by region, states (No. of orders in each month for each state is shown)
 ```sql
 SELECT EXTRACT(MONTH FROM order_purchase_timestamp) as months, 
   customer_state as states, 
@@ -97,7 +100,7 @@ ORDER BY months,states;
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/7.PNG" width=40% height=40%>
 
-### 2. How are the customers distributed across all the states?
+### 2. Distribution of customers across all the states
 The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
 ```sql
 SELECT customer_state as states, 
@@ -109,7 +112,7 @@ ORDER BY no_customers DESC;
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/8.PNG" width=40% height=40%>
 
-## 4.	Impact on Economy: Analyze the money movement by e-commerce by looking at order prices, freight and others.
+## 4.	Impact on Economy:
 ### 1. What is the percent increase in cost of order from 2017 to 2018 (include months between Jan to Aug only)?
 ```sql
 WITH yearly_costs AS 
@@ -131,7 +134,7 @@ LIMIT 1;
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/9.PNG" width=40% height=40%>
 
-### 2. Mean and sum of price and freight value by customer states.
+### 2. Mean and sum of price and freight value by customer states
 ```sql
 SELECT customer_state,
   ROUND(SUM(price),2) as sum_price, 
@@ -233,7 +236,7 @@ LIMIT 5;
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15b.png" width=40% height=40%>
 
-### Top 5 states where delivery is really fast/ not so fast compared to estimated date 
+### Top 5 states where delivery is really fast/ not so fast compared to estimated date
 State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
 ```sql
 SELECT customer_state, 
