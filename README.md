@@ -278,6 +278,7 @@ ORDER BY payment_installments;
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.png" width=40% height=40%>
 
+## Tableau dashboard
 <p align="center">
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/tableau.PNG" width=100% height=100%>
   
