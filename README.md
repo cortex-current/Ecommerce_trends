@@ -55,7 +55,7 @@ ORDER BY count_status DESC;
 ```
 
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4b.PNG" width=40% height=40%>
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
