@@ -50,7 +50,8 @@ A small snippet of the list of cities and states of customer address locations i
 SELECT order_status,
   COUNT(*) count_status
 FROM orders
-GROUP BY order_status;
+GROUP BY order_status
+ORDER BY count_status DESC;
 ```
 
 <p align="center">
