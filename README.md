@@ -4,7 +4,7 @@ This is a public dataset of 100k orders made at Olist Store, a Brazilian ecommer
 ## Dataset source
 Olist, &amp; André Sionek. (2018). <i>Brazilian E-Commerce Public Dataset by Olist</i> [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/195341
 
-## Tools used
+## Tools
 SQL(BigQuery), Excel, Tableau
 
 ## Data Schema
