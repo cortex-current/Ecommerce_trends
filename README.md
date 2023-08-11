@@ -98,7 +98,7 @@ FROM sales_time
 GROUP BY Time;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/6.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/6.PNG" width=40% height=40%><img src="https://github.com/mkadwani/SQLproject/blob/screenshots/excel6.PNG" width=28% height=28%>
 
 ## 3.	Evolution of E-commerce orders in the region:
 ### 1. Month on month orders by region, states (No. of orders in each month for each state is shown)
