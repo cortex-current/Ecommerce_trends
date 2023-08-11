@@ -114,7 +114,7 @@ ORDER BY months,states;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/7.PNG" width=40% height=40%>
 
 ### 2. Distribution of customers across all the states
-The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
+The most number (40,302) of customers are located in São Paulo, then Rio de Janeiro, then Minas Gerais, and so on with the least number in Roraima.
 ```sql
 SELECT customer_state as states, 
   COUNT(DISTINCT customer_unique_id) as no_customers 
@@ -214,7 +214,7 @@ ORDER BY customer_state;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/13.png" width=40% height=40%>
 
 ### 4. Top 5 states with highest/lowest average freight value
-State RR has the most expensive freight value, and SP has cheapest freight value.
+State Roraima has the most expensive freight value, and São Paulo has cheapest freight value.
 ```sql
 SELECT customer_state, 
   ROUND(AVG(freight_value),2) AS mean_freight, 
@@ -232,7 +232,7 @@ LIMIT 5;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/14b.png" width=40% height=40%>
 
 ### Top 5 states with highest/lowest average time to delivery
-State SP has fastest delivery from purchase date, while states AP and RR have slowest.
+State São Paulo has fastest delivery from purchase date, while states Amapá and Roraima have slowest.
 ```sql
 SELECT customer_state, 
   ROUND(AVG(freight_value),2) AS mean_freight, 
@@ -250,7 +250,7 @@ LIMIT 5;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/15b.png" width=40% height=40%>
 
 ### Top 5 states where delivery is really fast/ not so fast compared to estimated date
-State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
+State Alagoas has fastest delivery compared to estimated date, and state Acre has the slowest delivery or highest delay from estimated date.
 ```sql
 SELECT customer_state, 
   ROUND(AVG(freight_value),2) AS mean_freight, 
@@ -296,13 +296,12 @@ ORDER BY payment_installments;
 <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/tableau.PNG" width=100% height=100%>
   
 ## Insights:
--	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. This could be because of lesser number of months in year 2016 (since September to December) compared to all the months in 2017.  There was 136.98% increase in sales from 2017 to 2018.
--	There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August. Business should focus on improving sales in the months after August.
+-	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. There was 136.98% increase in sales from 2017 to 2018.
 - Brazilians tend to buy more during afternoon or evening time maybe because of off work hours.
--	The most number (40,302) of customers are located in SP, then RJ, then MG, and so on with the least number in RR.
--	State RR has the most expensive freight value, and SP has cheapest freight value.
--	State SP has fastest delivery from purchase date, while states AP and RR have slowest.
--	State AL has fastest delivery compared to estimated date, and state AC has the slowest delivery or highest delay from estimated date.
+-	The most number (40,302) of customers are located in Sao Paulo, then Rio de Janeiro, then MG, and so on with the least number in Roraima.
+-	State Roraima has the most expensive freight value, and Sao Paulo has cheapest freight value.
+-	State Sao Paulo has fastest delivery from purchase date, while states Amapá and Roraima have slowest.
+-	State Alagoas has fastest delivery compared to estimated date, and state Acre has the slowest delivery or highest delay from estimated date.
 -	Most popular mode of payment is credit card, then UPI, then vouchers and finally debit cards are the least popular method. Most number of purchases are made in the middle of a year.
 -	Most customers pay in a single or fewer than 5 number of installments.
 
