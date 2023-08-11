@@ -70,8 +70,8 @@ FROM orders o JOIN order_items oi ON oi.order_id = o.order_id
 GROUP BY 1,2
 ORDER BY 1,2
 ```
-<p align="center"><img src="https://github.com/mkadwani/SQLproject/blob/screenshots/excel5.PNG" width=50% height=50%>
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%>
+<p align="center">
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%><img src="https://github.com/mkadwani/SQLproject/blob/screenshots/excel5.PNG" width=50% height=50%>
 
 ### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
 ```sql
