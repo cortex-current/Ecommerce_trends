@@ -59,7 +59,7 @@ ORDER BY count_status DESC;
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
-We can look at the number of purchases made across different months or years. Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. There are more purchases in the first half or middle of the year like May, July, August than in the period after the month of August.
+We can look at the number of purchases made across different months or years. Number of orders made increase rapidly from 2016 to 2017, and then gradually from 2017 to 2018.
 ```sql
 SELECT
   EXTRACT(year FROM order_purchase_timestamp) order_year,
