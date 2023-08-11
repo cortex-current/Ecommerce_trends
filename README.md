@@ -10,7 +10,7 @@ SQL(BigQuery), Excel, Tableau
 ## Data Schema
 The data is stored in multiple tables shown below for reference:
 <p align="center">
-<img src="https://imgur.com/HRhd2Y0.png" width=100% height=100%>
+<img src="https://imgur.com/HRhd2Y0.png" width=70% height=70%>
 
 ## 1. Exploring the data:
 The CSV files were first loaded in Microsoft Excel and transformed using functions such as VLOOKUP and conditional functions. Some more useful columns were created such as translation of Spanish product category names to English names for our understanding. 
@@ -55,7 +55,7 @@ ORDER BY count_status DESC;
 ```
 
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4b.PNG" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/4b.PNG" width=30% height=30%>
 
 ## 2. In-depth exploration:
 ### 1. Is there a growing trend on e-commerce in the region?
@@ -71,7 +71,9 @@ GROUP BY 1,2
 ORDER BY 1,2
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%><img src="https://github.com/mkadwani/SQLproject/blob/screenshots/excel5.PNG" width=50% height=50%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/5.PNG" width=40% height=40%>
+            
+  <img src="https://github.com/mkadwani/SQLproject/blob/screenshots/excel5.PNG" width=50% height=50%>
 
 ### 2. During what time of the day, do the customers mostly place their orders? (Dawn, Morning, Afternoon or Night)?
 ```sql
@@ -284,7 +286,7 @@ GROUP BY payment_installments
 ORDER BY payment_installments;
 ```
 <p align="center">
-<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.png" width=40% height=40%>
+<img src="https://github.com/mkadwani/SQLproject/blob/screenshots/18.png" width=20% height=20%>
 
 ## Tableau dashboard
 <p align="center">
