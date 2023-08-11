@@ -1,6 +1,9 @@
 ## Problem Statement
 This is a public dataset of 100k orders made at Olist Store, a Brazilian ecommerce company, from 2016 to 2018 at multiple marketplaces across Brazil. Its features store order information from multiple dimensions: order status, price, payment and freight performance, customer location, product attributes and reviews written by customers. There is a table about geolocation dataset that relates Brazilian zip codes to latitude/longitude coordinates.
 
+## Background
+Olist is a Brazilian startup founded in 2015 at Curitiba, Brazil and it became Series E Unicorn in December 2021. It has raised an equity funding of $322.5M so far. It is an online marketplace connecting Small & Midsize Businesses (SMB) to wider audience and providing logistics and is one of the largest marketplaces in Brazil. 
+
 ## Dataset source
 Olist, &amp; André Sionek. (2018). <i>Brazilian E-Commerce Public Dataset by Olist</i> [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/195341
 
