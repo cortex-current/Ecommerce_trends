@@ -298,7 +298,7 @@ ORDER BY payment_installments;
 ## Insights:
 -	Number of orders made increase rapidly from 2016 to 2017, then increased marginally from 2017 to 2018. There was 136.98% increase in sales from 2017 to 2018.
 - Brazilians tend to buy more during afternoon or evening time maybe because of off work hours.
--	The most number (40,302) of customers are located in Sao Paulo, then Rio de Janeiro, then MG, and so on with the least number in Roraima.
+-	The most number (40,302) of customers are located in Sao Paulo, then Rio de Janeiro, then Minas Gerais, and so on with the least number in Roraima.
 -	State Roraima has the most expensive freight value, and Sao Paulo has cheapest freight value.
 -	State Sao Paulo has fastest delivery from purchase date, while states Amapá and Roraima have slowest.
 -	State Alagoas has fastest delivery compared to estimated date, and state Acre has the slowest delivery or highest delay from estimated date.
