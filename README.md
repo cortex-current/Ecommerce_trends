@@ -16,9 +16,7 @@ The data is stored in multiple tables shown below for reference:
 <img src="https://imgur.com/HRhd2Y0.png" width=70% height=70%>
 
 ## 1. Exploring the data:
-The CSV files were first loaded in Microsoft Excel and transformed using functions such as VLOOKUP and conditional functions. Some more useful columns were created such as translation of Spanish product category names to English names for our understanding. 
-
-Later, the files were loaded in Google BigQuery and the various queries created are shown below:
+The files were loaded in Google BigQuery and the various queries created are shown below:
 
 ### The time period for orders in dataset
 ```sql
