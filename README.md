@@ -1,12 +1,3 @@
-# A
-# A
-# A
-# A
-# A
-# A
-# A
-# A
-# A
 ## Dataset source
 Olist, &amp; André Sionek. (2018). <i>Brazilian E-Commerce Public Dataset by Olist</i> [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/195341
 
