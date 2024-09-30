@@ -1,3 +1,5 @@
+# ... in progress
+
 # Predicting how a customer will feel about a product before they even ordered it
 
 We want to predict the customer product satisfaction score for the next order or purchase which will help make better decisions. But it is not enough to just train the model once.
